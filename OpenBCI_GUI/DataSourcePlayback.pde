@@ -150,7 +150,25 @@ abstract class DataSourcePlayback implements DataSource, FileBoard  {
 
         // don't go beyond raw data array size
         currentSampleExg = min(currentSampleExg, getTotalSamples());
+
+        printCurrentDataWindow(10);
     }
+
+    void printCurrentDataWindow(int maxSamples) {
+        List<double[]> dataWindow = getData(maxSamples);
+        println("当前播放数据窗口，长度：" + dataWindow.size());
+        
+        for (int i = 0; i < dataWindow.size(); i++) {
+            double[] sample = dataWindow.get(i);
+            print("Sample " + (currentSampleExg - dataWindow.size() + 1 + i) + ": ");
+            for (int ch = 0; ch < sample.length; ch++) {
+            print(sample[ch]);
+            if (ch < sample.length - 1) print(", ");
+            }
+            println();
+        }
+    }
+
 
     @Override
     public void startStreaming() {

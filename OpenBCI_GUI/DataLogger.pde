@@ -80,6 +80,7 @@ class DataLogger {
             StringBuilder sb = new StringBuilder("OpenBCI_GUI: BrainFlow Streamer Location: ");
             sb.append(brainflowStreamer);
             println(sb.toString());
+            println("caojian:" + sb.toString());
         }
     }
 
